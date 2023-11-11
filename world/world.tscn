@@ -21,12 +21,6 @@ tower_standard = ExtResource("2_8nkll")
 [node name="Cat" parent="." instance=ExtResource("3_w0oh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 32)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Cat"]
-
-[node name="Label" type="Label" parent="Cat/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="Timers" type="Node" parent="."]
 
 [node name="TowerTimer" type="Timer" parent="Timers"]

@@ -69,11 +69,11 @@ mesh = SubResource("CapsuleMesh_eiylk")
 [node name="BodyCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kcv2b")
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 2
+[node name="Detector" type="Area3D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="DetectorCollider" type="CollisionShape3D" parent="Detector"]
 shape = SubResource("CapsuleShape3D_u6pge")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -84,4 +84,4 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 8, 4)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Detector" to="." method="_on_area_3d_body_entered"]
