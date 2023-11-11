@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://hg6yxoajq38t"]
+
+[ext_resource type="Script" path="res://Player/cat.gd" id="1_sy43n"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eiylk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kcv2b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u6pge"]
+
+[sub_resource type="Animation" id="Animation_6hi7w"]
+resource_name = "start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 1, 32), Vector3(2.08165e-12, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 8, 4), Vector3(2.08165e-12, 2, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 3.48787e-16, 3.48787e-16), Vector3(-0.261799, 3.48787e-16, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_ffw14"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6y4q"]
+_data = {
+"RESET": SubResource("Animation_ffw14"),
+"start": SubResource("Animation_6hi7w")
+}
+
+[node name="Cat" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 32)
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_sy43n")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("CapsuleMesh_eiylk")
+
+[node name="BodyCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kcv2b")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_u6pge")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o6y4q")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 8, 4)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
