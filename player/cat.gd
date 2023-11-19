@@ -56,15 +56,12 @@ func _physics_process(delta: float) -> void:
 	# Climb kitty climb!
 	if is_climbing:
 		velocity.y = gravity
-
+		
 	velocity.x = Input.get_axis("move_left", "move_right")
 	if velocity.x:
-		velocity.x *= SPEED
+		velocity *= SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	velocity *= transform.basis.x
-
 	move_and_slide()
 	
 	position.x = clampf(position.x, -4.25, 4.25)
