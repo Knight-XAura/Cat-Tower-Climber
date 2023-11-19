@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://ch6x0jkicn60m"]
+
+[ext_resource type="PackedScene" uid="uid://beakedlj3gs1s" path="res://tower/rope/base_var.glb" id="1_eacyq"]
+[ext_resource type="Script" path="res://tower/rope/rope.gd" id="1_q4rik"]
+[ext_resource type="Texture2D" uid="uid://egynmuiab7l6" path="res://tower/tower_fluff.png" id="2_lvkrp"]
+[ext_resource type="Texture2D" uid="uid://bxd8xbpbp426v" path="res://tower/rope/rope.png" id="3_5dya8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jwfu"]
+size = Vector3(9, 9, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsixn"]
+albedo_texture = ExtResource("2_lvkrp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cb6o0"]
+albedo_texture = ExtResource("3_5dya8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_243dy"]
+albedo_texture = ExtResource("2_lvkrp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_auoi2"]
+size = Vector3(4.5, 5.75, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvjb8"]
+size = Vector3(9, 9, 9)
+
+[node name="Rope" type="StaticBody3D"]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 4.5, 2.08165e-12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_q4rik")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5jwfu")
+
+[node name="base_var" parent="." instance=ExtResource("1_eacyq")]
+
+[node name="pillar_top" parent="base_var" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nsixn")
+
+[node name="pillar_base" parent="base_var" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_cb6o0")
+
+[node name="base_var 1" parent="base_var" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_243dy")
+
+[node name="Rope_Area" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rope_Area"]
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, -2.25, -0.125, 2.25)
+shape = SubResource("BoxShape3D_auoi2")
+
+[node name="Area3D2" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_wvjb8")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="base_var"]

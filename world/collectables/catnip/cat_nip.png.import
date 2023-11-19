@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0nnv5vb32ec"
-path.s3tc="res://.godot/imported/yarn.png-71ed9e2fea29678ed379d7efb37fd87d.s3tc.ctex"
+uid="uid://dtmkg82gr5tue"
+path.s3tc="res://.godot/imported/cat_nip.png-45ac4a55a0ac3cf624964b644ab1754f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://world/collectables/yarn/yarn.png"
-dest_files=["res://.godot/imported/yarn.png-71ed9e2fea29678ed379d7efb37fd87d.s3tc.ctex"]
+source_file="res://world/collectables/catnip/cat_nip.png"
+dest_files=["res://.godot/imported/cat_nip.png-45ac4a55a0ac3cf624964b644ab1754f.s3tc.ctex"]
 
 [params]
 

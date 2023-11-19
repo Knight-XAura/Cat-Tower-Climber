@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://djryaqaft5xfg"]
+
+[ext_resource type="PackedScene" uid="uid://cxuttu2dapw7g" path="res://world/collectables/catnip/catnip.glb" id="1_4u67j"]
+[ext_resource type="Script" path="res://world/collectables/catnip/catnip.gd" id="1_lg5hs"]
+[ext_resource type="Texture2D" uid="uid://dtmkg82gr5tue" path="res://world/collectables/catnip/cat_nip.png" id="3_wnqwd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8e2vk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74g7g"]
+albedo_texture = ExtResource("3_wnqwd")
+
+[node name="Catnip" type="Node3D"]
+script = ExtResource("1_lg5hs")
+
+[node name="Catnip_Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 5)
+top_level = true
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Catnip_Area"]
+shape = SubResource("SphereShape3D_8e2vk")
+
+[node name="catnip" parent="." instance=ExtResource("1_4u67j")]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 5)
+top_level = true
+
+[node name="Cylinder_001" parent="catnip" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_74g7g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Catnip_Area" to="." method="_on_area_3d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="catnip"]

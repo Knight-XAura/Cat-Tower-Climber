@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dgtcnmdkbbvqt"
-path="res://.godot/imported/hole.glb-dd7c6bbb168e5976d75aabb6109a44fa.scn"
+path="res://.godot/imported/hole.glb-480aa123d90b5c7f5bef84e863b3825e.scn"
 
 [deps]
 
-source_file="res://tower/hole/hole.glb"
-dest_files=["res://.godot/imported/hole.glb-dd7c6bbb168e5976d75aabb6109a44fa.scn"]
+source_file="res://world/obstacles/hole/hole.glb"
+dest_files=["res://.godot/imported/hole.glb-480aa123d90b5c7f5bef84e863b3825e.scn"]
 
 [params]
 
