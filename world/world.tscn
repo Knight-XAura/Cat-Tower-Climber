@@ -135,7 +135,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Programmer: Knight XAura - Artist: JamShore - Wheat: Designer"
 
-[connection signal="rotate_parent_node" from="Node3D/Cat" to="Node3D" method="_on_cat_rotate_parent_node"]
 [connection signal="timeout" from="Timers/TowerTimer" to="Tower" method="_on_tower_timer_timeout"]
 [connection signal="timeout" from="Timers/ObstacleTimer" to="Tower" method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="Timers/CollectableTimer" to="Tower" method="_on_collectable_timer_timeout"]

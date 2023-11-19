@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-signal rotate_parent_node(direction: int)
+#signal rotate_parent_node(direction: int)
 
 @onready var detector: Area3D = $Detector
 
@@ -43,10 +43,10 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if position.x >= 4 and Input.is_action_just_pressed("switch_side"):
-		rotate_parent_node.emit(1)
-	elif position.x <= -4 and Input.is_action_just_pressed("switch_side"):
-		rotate_parent_node.emit(-1)
+#	if position.x >= 4 and Input.is_action_just_pressed("switch_side"):
+#		rotate_parent_node.emit(1)
+#	elif position.x <= -4 and Input.is_action_just_pressed("switch_side"):
+#		rotate_parent_node.emit(-1)
 
 	height.text = "Height: " + str(floorf(position.y / 9.0)) + "m"
 
@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		
 	velocity.x = Input.get_axis("move_left", "move_right")
 	if velocity.x:
-		velocity *= SPEED
+		velocity.x *= SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
