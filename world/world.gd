@@ -2,4 +2,5 @@ extends Node3D
 
 
 func _on_game_over_screen_restart() -> void:
-	get_tree().reload_current_scene()
+	add_sibling(load("res://world/world.tscn").instantiate())
+	queue_free()

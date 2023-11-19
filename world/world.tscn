@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7dgmmlroi010"]
+[gd_scene load_steps=13 format=3 uid="uid://b7dgmmlroi010"]
 
 [ext_resource type="PackedScene" uid="uid://depvhd8hv1eiv" path="res://world/floor/floor.tscn" id="1_5184r"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_x8frl"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://ce3856qn5wf0s" path="res://world/obstacles/hole/hole.tscn" id="4_yxbw5"]
 [ext_resource type="PackedScene" uid="uid://djryaqaft5xfg" path="res://world/collectables/catnip/catnip.tscn" id="5_kwx47"]
 [ext_resource type="PackedScene" uid="uid://ch6x0jkicn60m" path="res://tower/rope/rope.tscn" id="5_u7041"]
-[ext_resource type="Script" path="res://world/ui.gd" id="10_6g4wi"]
 [ext_resource type="Script" path="res://world/GameOverScreen.gd" id="12_50fip"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pvok6"]
@@ -28,7 +27,6 @@ obstacle_hole = ExtResource("4_yxbw5")
 obstacle_rope = ExtResource("5_u7041")
 collectable_yarn = ExtResource("4_qrn5j")
 collectable_catnip = ExtResource("5_kwx47")
-catnip_chance = 25.0
 
 [node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("4_5fagc")
@@ -72,7 +70,6 @@ theme_override_constants/margin_bottom = 8
 
 [node name="HUD" type="Control" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
-script = ExtResource("10_6g4wi")
 
 [node name="Height" type="Label" parent="CanvasLayer/MarginContainer/HUD"]
 layout_mode = 1
